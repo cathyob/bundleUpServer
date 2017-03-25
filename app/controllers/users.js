@@ -44,9 +44,15 @@ const makeErrorHandler = (res, next) =>
       res.status(400).json({ error }) :
     next(error);
 
+// TODO TEST THIS SOLUTION, lines 52-55 TODO //
 const signup = (req, res, next) => {
   let credentials = req.body.credentials;
-  let user = { email: credentials.email, password: credentials.password };
+  let user = { email: credentials.email, password: credentials.password};
+  // needed to add this if to ensure new and old passwords match
+  if (req.body.credentials.password !== req.body.credentials.password_confirmation) {
+    makeErrorHandler(res, next);
+    return;
+  }
   getToken()
     .then(token => user.token = token)
     .then(() =>
@@ -96,8 +102,9 @@ const changepw = (req, res, next) => {
     _id: req.params.id,
     token: req.user.token,
   }).then(user =>
-    user ? user.comparePassword(req.body.passwords.old) :
-      Promise.reject(new HttpError(404))
+      // needed to add this line to prevent false success message when no new password typed
+      user && req.body.passwords.new !== '' ? user.comparePassword(req.body.passwords.old) :
+        Promise.reject(new HttpError(404))
   ).then(user => {
     user.password = req.body.passwords.new;
     return user.save();
