@@ -44,19 +44,15 @@ const makeErrorHandler = (res, next) =>
       res.status(400).json({ error }) :
     next(error);
 
-// TODO TEST THIS SOLUTION, lines 52-55 TODO //
 const signup = (req, res, next) => {
   let credentials = req.body.credentials;
   let user = { email: credentials.email, password: credentials.password};
-  // needed to add this if to ensure new and old passwords match
-  if (req.body.credentials.password !== req.body.credentials.password_confirmation) {
-    makeErrorHandler(res, next);
-    return;
-  }
   getToken()
     .then(token => user.token = token)
+    // needed to add ternary to ensure new and old passwords match before saving new user
     .then(() =>
-      new User(user).save())
+      req.body.credentials.password !== req.body.credentials.password_confirmation ?
+        Promise.reject(new HttpError(404)) : new User(user).save())
     .then(user =>
       res.status(201).json({ user }))
     .catch(makeErrorHandler(res, next));
