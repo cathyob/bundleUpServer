@@ -76,14 +76,10 @@ module.exports = controller({
       only: ['index', 'show', 'create', 'update', 'destroy']
     },
     {
-      method: setModel(Log),
-      only: ['show']
-    },
-    {
       method: setModel(Log, {
         forUser: true
       }),
-      only: ['update', 'destroy']
+      only: ['show', 'update', 'destroy']
     },
   ],
 });
