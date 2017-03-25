@@ -10,9 +10,6 @@ const logSchema = new mongoose.Schema({
   temp: {
     type: Number,
   },
-  humidity: {
-    type: Number,
-  },
   feelsLike: {
     type: Number,
     required:true,
