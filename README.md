@@ -33,19 +33,20 @@ My inital designs could have been applied to an SQL or NoSQL structure and my fu
 
 A User document contains subdocuments of Logs. Each Log contains:
 - dateTime: { type: Date, default: Date.now, },
+- location: { type: String, required: true, },
 - temp: { type: Number, },
-- feelsLike: { type: Number, required:true, },
+- feelsLike: { type: Number, required: true, },
 - weatherConditions: { type: String, required: true, },
 - bottomLayers: { type: String, default: '', },
 - topLayers: { type: String, required: true, default: '', },
 - accessories: { type: String, default: '', },
-- activityLevel: { type: Number, required: true, },
-- comfortLevel: { type: Number, required: true, }
+- activityLevel: { type: Number, required: true, default: 3, },
+- comfortLevel: { type: Number, required: true, default: 3, }
 
 ## Approach
 I decided to have the dateTime default to the time the report is created. Also, the feelsLike detail is required since that will be what I will base returning the most recent, similar days to a customized message shown to a signed in user.
 
-For the layers fields, I made them each default to an empty string so that if the user leaves them blank it won't return null. This reduces the cases needed to be accounted for in the front end.
+For the layers fields, I made them each default to an empty string so that if the user leaves them blank it won't return null. Also, I defaulted the activity and comfort levels to 3 (middle of scale of 1-5). This reduces the cases needed to be accounted for in the front end.
 
 ## Testing and Hurdles
 As part of the set-up of this file, I found and addressed two shortcomings within the users controller:

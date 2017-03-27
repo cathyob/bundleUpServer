@@ -3,26 +3,30 @@
 const mongoose = require('mongoose');
 
 const logSchema = new mongoose.Schema({
-  dateTime: {
+  date_time: {
     type: Date,
     default: Date.now,
+  },
+  location: {
+    type: String,
+    required: true,
   },
   temp: {
     type: Number,
   },
-  feelsLike: {
+  feels_like: {
     type: Number,
-    required:true,
+    required: true,
   },
-  weatherConditions: {
+  weather_conditions: {
     type: String,
     required: true,
   },
-  bottomLayers: {
+  bottom_layers: {
     type: String,
     default: '',
   },
-  topLayers: {
+  top_layers: {
     type: String,
     required: true,
     default: '',
@@ -31,13 +35,15 @@ const logSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
-  activityLevel: {
+  activity_level: {
     type: Number,
     required: true,
+    default: '3',
   },
-  comfortLevel: {
+  comfort_level: {
     type: Number,
     required: true,
+    default: '3',
   },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
