@@ -10,14 +10,15 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
     "log": {
+      "location": "'"${LOC}"'",
       "temp": "'"${TEMP}"'",
-      "feelsLike": "'"${FEELS}"'",
-      "weatherConditions": "'"${WCONS}"'",
-      "bottomLayers": "'"${BOTTOM}"'",
-      "topLayers": "'"${TOP}"'",
+      "feels_like": "'"${FEELS}"'",
+      "weather_conditions": "'"${WCONS}"'",
+      "bottom_layers": "'"${BOTTOM}"'",
+      "top_layers": "'"${TOP}"'",
       "accessories": "'"${ACC}"'",
-      "activityLevel": "'"${ACTIVITY}"'",
-      "comfortLevel": "'"${COMFORT}"'"
+      "activity_level": "'"${ACTIVITY}"'",
+      "comfort_level": "'"${COMFORT}"'"
     }
   }'
 
