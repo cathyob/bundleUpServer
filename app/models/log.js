@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const integerValidator = require('mongoose-integer');
 
 const logSchema = new mongoose.Schema({
   date_time: {
@@ -13,9 +14,11 @@ const logSchema = new mongoose.Schema({
   },
   temp: {
     type: Number,
+    integer: true,
   },
   feels_like: {
     type: Number,
+    integer: true,
     required: true,
   },
   weather_conditions: {
@@ -28,7 +31,6 @@ const logSchema = new mongoose.Schema({
   },
   top_layers: {
     type: String,
-    required: true,
     default: '',
   },
   accessories: {
@@ -37,13 +39,17 @@ const logSchema = new mongoose.Schema({
   },
   activity_level: {
     type: Number,
+    integer: true,
     required: true,
-    default: '3',
+    min: 1,
+    max: 5,
   },
   comfort_level: {
     type: Number,
+    integer: true,
     required: true,
-    default: '3',
+    min: 1,
+    max: 5,
   },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -63,5 +69,7 @@ const logSchema = new mongoose.Schema({
 });
 
 const Log = mongoose.model('Log', logSchema);
+
+logSchema.plugin(integerValidator);
 
 module.exports = Log;

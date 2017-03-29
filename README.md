@@ -32,21 +32,26 @@ Uses MongoDB, Mongoose, Express along with a Heroku deployed backend server
 My inital designs could have been applied to an SQL or NoSQL structure and my future plans for the app did not impact either version so I decided to use a Mongo/Express API to practice NoSQL.
 
 A User document contains subdocuments of Logs. Each Log contains:
-- dateTime: { type: Date, default: Date.now, },
+- date_time: { type: Date, default: Date.now, },
 - location: { type: String, required: true, },
-- temp: { type: Number, },
-- feelsLike: { type: Number, required: true, },
-- weatherConditions: { type: String, required: true, },
-- bottomLayers: { type: String, default: '', },
-- topLayers: { type: String, required: true, default: '', },
+- temp: { type: Number, integer: true, },
+- feels_like: { type: Number, integer: true, required: true, },
+- weather_conditions: { type: String, required: true, },
+- bottom_layers: { type: String, default: '', },
+- top_layers: { type: String, default: '', },
 - accessories: { type: String, default: '', },
-- activityLevel: { type: Number, required: true, default: 3, },
-- comfortLevel: { type: Number, required: true, default: 3, }
+- activity_level: { type: Number, integer: true, required: true, min: 1, max: 5, },
+- comfort_level: { type: Number, integer: true, required: true, min: 1, max: 5, },
+
+For the integers, I installed mongoose-integer:
+https://www.npmjs.com/package/mongoose-integer
+It worked perfectly for what I needed.
 
 ## Approach
 I decided to have the dateTime default to the time the report is created. Also, the feelsLike detail is required since that will be what I will base returning the most recent, similar days to a customized message shown to a signed in user.
 
 For the layers fields, I made them each default to an empty string so that if the user leaves them blank it won't return null. Also, I defaulted the activity and comfort levels to 3 (middle of scale of 1-5). This reduces the cases needed to be accounted for in the front end.
+
 
 ## Testing and Hurdles
 As part of the set-up of this file, I found and addressed two shortcomings within the users controller:

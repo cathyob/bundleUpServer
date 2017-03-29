@@ -32,6 +32,10 @@ const show = (req, res) => {
 };
 
 const create = (req, res, next) => {
+  if(req.body.log.date_time === null) {
+    delete req.body.log.date_time;
+  }
+
   let log = Object.assign(req.body.log, {
     _owner: req.user._id,
   });
