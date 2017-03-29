@@ -9,6 +9,7 @@ BACK END REPO: https://github.com/cathyob/bundleUpServer
 DEPLOYED BACK END:  https://bundleupcathyob.herokuapp.com/
 
 ## Endpoints
+
 User:
   * Create - sign up -  POST - /sign-up
   * Read - sign in - POST - /sign-in/:id
@@ -24,9 +25,11 @@ Log:
   * Delete - remove past entry - DELETE - /log/:id
 
 ## ERD
+
 ![alt text](https://raw.githubusercontent.com/cathyob/bundleUpServer/master/ERD.png "ERD")
 
 ## Dependencies/Technologies
+
 This API uses MongoDB, Mongoose, Express along with a Heroku deployed backend server.
 
 I've also hooked up two 3rd party APIs - Google for translating a zipcode into latitude/longitude and Dark Sky for retrieving weather data for that location.
@@ -50,12 +53,14 @@ https://www.npmjs.com/package/mongoose-integer
 It worked perfectly for what I needed.
 
 ## Approach
+
 I decided to have the dateTime default to the time the report is created. Also, the feelsLike detail is required since that will be what I will base returning the most recent, similar days to a customized message shown to a signed in user.
 
 For the layers fields, I made them each default to an empty string so that if the user leaves them blank it won't return null. Also, I defaulted the activity and comfort levels to 3 (middle of scale of 1-5). This reduces the cases needed to be accounted for in the front end.
 
 
 ## Testing and Hurdles
+
 As part of the set-up of this file, I found and addressed two shortcomings within the users controller:
 1) On sign-up it did not check to see if the second password entry matched the first. I added a ternary to ensure they matched.
 2) On change password it did not recognize an empty new password as an error. I added a ternary to ensure it was not an empty string.
@@ -63,6 +68,7 @@ As part of the set-up of this file, I found and addressed two shortcomings withi
 Before deployment I made sure to create curl scripts in order to test my log endpoints. I was able to create working curl scripts for all routes.
 
 # Thank you!
+
 Thank you very much for checking out my app!
 Please be sure to try it out and let me know if you have any questions!
 https://cathyob.github.io/bundleUP/
