@@ -3,8 +3,11 @@
 const controller = require('lib/wiring/controller');
 // Used to make the calls to google / darksky
 const http = require('https');
-const googleAPIKey = 'AIzaSyBRnY5BnVKkRwWBJRLs1HU4daPcHxT_lXc';
-const weatherAPIKey = '15cb5aa129b8256a1d99f7e9cc4865cb';
+const googleAPIKey = process.env.GOOGLE_API_KEY;
+const weatherAPIKey = process.env.WEATHER_API_KEY;
+
+// console.log(googleAPIKey);
+// console.log(weatherAPIKey);
 
 const processWeather = (lat, long, addressData, res) => {
   // Need to make a request to dark sky with the info we get from google
