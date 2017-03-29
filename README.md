@@ -27,7 +27,9 @@ Log:
 ![alt text](https://raw.githubusercontent.com/cathyob/bundleUpServer/master/ERD.png "ERD")
 
 ## Dependencies/Technologies
-Uses MongoDB, Mongoose, Express along with a Heroku deployed backend server
+This API uses MongoDB, Mongoose, Express along with a Heroku deployed backend server.
+
+I've also hooked up two 3rd party APIs - Google for translating a zipcode into latitude/longitude and Dark Sky for retrieving weather data for that location.
 
 My inital designs could have been applied to an SQL or NoSQL structure and my future plans for the app did not impact either version so I decided to use a Mongo/Express API to practice NoSQL.
 
