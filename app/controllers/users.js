@@ -99,7 +99,7 @@ const changepw = (req, res, next) => {
     token: req.user.token,
   }).then(user =>
       // needed to add this line to prevent false success message when no new password typed
-      user && req.body.passwords.new !== '' ? user.comparePassword(req.body.passwords.old) :
+      user && req.body.passwords.new !== '' && req.body.passwords.new !== undefined ? user.comparePassword(req.body.passwords.old) :
         Promise.reject(new HttpError(404))
   ).then(user => {
     user.password = req.body.passwords.new;
