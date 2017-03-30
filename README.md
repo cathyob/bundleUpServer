@@ -63,9 +63,13 @@ For the layers fields, I made them each default to an empty string so that if th
 
 As part of the set-up of this file, I found and addressed two shortcomings within the users controller:
 1) On sign-up it did not check to see if the second password entry matched the first. I added a ternary to ensure they matched.
-2) On change password it did not recognize an empty new password as an error. I added a ternary to ensure it was not an empty string.
+https://github.com/ga-wdi-boston/express-api-template/issues/39
+2) On change password it did not recognize an empty new password as an error. I updated it to ensure it was not an empty string.
+https://github.com/ga-wdi-boston/express-api-template/issues/50
 
 Before deployment I made sure to create curl scripts in order to test my log endpoints. I was able to create working curl scripts for all routes.
+
+I added two 3rd party APIs to this repo - Google Maps Geocoding for latitute/logitude from a zip code and Dark Sky for the weather data based on that location. I filed an issue since this was the first time I'd used a 3rd party API in my own API and posted what I did here: https://github.com/ga-wdi-boston/capstone-project/issues/530
 
 # Thank you!
 
