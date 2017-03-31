@@ -56,8 +56,7 @@ It worked perfectly for what I needed.
 
 I decided to have the dateTime default to the time the report is created. Also, the feelsLike detail is required since that will be what I will base returning the most recent, similar days to a customized message shown to a signed in user.
 
-For the layers fields, I made them each default to an empty string so that if the user leaves them blank it won't return null. Also, I defaulted the activity and comfort levels to 3 (middle of scale of 1-5). This reduces the cases needed to be accounted for in the front end.
-
+Also, for the layers fields, I made them each default to an empty string so that if the user leaves them blank it won't return null. 
 
 ## Testing and Hurdles
 
